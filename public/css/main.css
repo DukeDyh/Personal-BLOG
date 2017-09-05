@@ -1,0 +1,162 @@
+*{
+	font-family: "arial, helvetica, sans-serif";
+}
+a:hover{
+	text-decoration: none;
+}
+.navbar a{
+	font-size: 25px;
+}
+.navbar:hover{
+	color: cornflowerblue;
+}
+.list-group-item a{
+	font-size: 15px;
+}
+.list-group-item a{
+	display: inline-block;
+	width: 100%;
+}
+.title1{
+	width: 100%;
+	position: relative;
+	box-shadow: 0 4px 10px #c7c7c7;
+	text-align: center;
+	font-weight: bolder;
+	padding: 20px;
+	margin-top: -20px;
+	background: white;
+	transition: 2s;
+	cursor: pointer;
+}
+.title1 span{
+	display: block;
+	animation: slidedown 2s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+.title1 span:first-child{
+	font-size: 40px;
+	color: #337ab7;
+}
+@keyframes slidedown{
+	0%{
+		transform: translateY(-200%);
+		opacity: 0;
+	}
+	100%{
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+.article{
+	background: white;
+	margin-top: 40px;
+	padding: 20px;
+}
+.title{
+	display: block;
+	padding: 10px;
+	text-align: center;
+	color: black;
+	font-size: 30px;
+	border-bottom: 1px solid #337AB7;
+	font-weight: bolder;
+}
+.title:hover{
+	color: #337ab7;
+	text-decoration: none;
+}
+.description{
+	padding: 10px;
+	font-size: 20px;
+	text-indent: 20px;
+}
+.header{
+	color: #999;
+}
+.btn{
+	background: #337AB7;
+}
+.aboutme{
+	position: relative;
+	text-align: center;
+	padding: 20px 10px;
+	background: white;
+	margin-top: 40px;
+}
+
+.aboutme p:first-child{
+	padding: 5px;
+	font-size: 25px;
+	text-align: center;
+	border-top: 1px solid #666;
+	border-bottom: 1px solid #666;
+}
+.aboutme-content{
+	line-height: 1.5;
+	padding: 20px;
+	font-size: 18px;
+	text-align: center;
+	color: #666;
+}
+#myimg{
+	text-align: center;
+}
+#myimg img{
+	border-radius: 50%;
+	opacity: 0.8;
+	position: relative;
+	display: block;
+	margin: auto;
+}
+.iconfont:hover{
+	text-decoration: none;
+}
+.iconfont{
+	margin-left:10px;
+}
+.aboutme .btn{
+	width: 100%;
+}
+.link{
+	cursor: pointer;
+}
+.tips{
+	color: red;
+}
+.logout{
+	cursor: pointer;
+}
+.box{
+	width: 92%;
+	position: absolute;
+}
+.content-title{
+	font-weight: bolder;
+	font-size: 25px;
+}
+.mycontent{
+	margin-top: 40px;
+	background: white;
+	padding: 20px;
+}
+.listBox{
+	padding: 20px;
+	margin-top: 20px;
+	background: white;
+}
+.messageBox{
+	border-bottom: 1px solid #999;
+	padding: 20px;
+}
+.mycomments{
+	font-family: "微软雅黑";
+	font-size: 18px;
+}
+.mycontent{
+	font-family: "arial, helvetica, sans-serif";
+	font-size: 20px;
+}
+@media only screen and (min-width:290px) {
+}

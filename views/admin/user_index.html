@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css"/>
+	</head>
+		<body>
+		{% include "layout.html" %}
+		<ol class="breadcrumb">
+		  <li><a href="/admin">管理首页</a></li>
+		  <li><span>用户列表</span></li>
+		</ol>
+	
+		<table class="table table-hover table-bordered table-striped">
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>密码</th>
+				<th>权限</th>
+			</tr>
+			{% for user in users %}
+			<tr>
+				<td>{{user._id.toString()}}</td>
+				<td>{{user.username}}</td>
+				<td>{{user.password}}</td>
+				<td>{%if user.isAdmin%}是{%endif%}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		
+		<nav aria-label="...">
+		  <ul class="pager">
+		    <li class="previous"><a href="/admin/user?page={{page-1}}"><span aria-hidden="true">&larr;</span>上一页</a></li>
+		    <li>
+		    	一共有{{count}}条数据, 每页显示{{limit}}数据,共{{pages}}页,当前第{{page}}页
+		    </li>
+		    <li class="next"><a href="/admin/user?page={{page+1}}">下一页<span aria-hidden="true">&rarr;</span></a></li>
+		  </ul>
+		</nav>
+		<script src="../../public/js/jquery-2.1.0.js"></script>
+		<script src="../../public/js/bootstrap.min.js"></script>
+		</body>
+</html>

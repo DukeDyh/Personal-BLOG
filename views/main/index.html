@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../public/css/main.css">
+		<link rel="stylesheet" type="text/css" href="../../public/css/header.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/css/iconfont.css"/>
+		<style>
+			.icon {
+			   width: 1em; height: 1em;
+			   vertical-align: -0.15em;
+			   fill: currentColor;
+			   overflow: hidden;
+			}
+		</style>
+	</head>
+	<body style="background: #f0f0f0;">
+			<div class="navbar navbar-inverse">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="./blog">Home</a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					        <span class="icon-bar"></span>
+					    </button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" href="" fade>
+									Category
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu" style="padding:0 0;">
+									<ul class="list-group" style="padding:0 0;">
+										{% for category in categories %}
+										<li class="list-group-item"><a href="/blog?category={{category.id}}">{{category.name}}</a></li>
+										{%endfor%}
+									</ul>
+								</ul>
+							</li>
+							<li><a href="./blog">About me</a></li>
+							<li><a href="">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<p class="title1"><span>THISBLOG</span><span>Just keep track of my life</span></p>
+			<div class="container">
+				<div class="col-sm-8">
+					<div class="container-fluid">
+						{% for content in contents%}
+						<div class="article clearfix">
+							<a class="title" href="/view?contentid={{content.id}}">{{content.title}}</a>
+							<p class="description">{{content.description}}</p>
+							<button class="btn"><a href=""><a href="/view?contentid={{content.id}}" style="color: white;">阅读原文</a></button>
+							<span class="header" style="float: right;">posted by {{content.user.username}} on {{content.addTime|date("Y年m月d日")}}</span>
+						</div>
+						{%endfor%}
+						<ul class="pager">
+				  			{%if page<=1 %}
+				    		<!--<li class="previous"><a href="/blog?page={{page-1}}"><span aria-hidden="true">&larr;</span>上一页</a></li>-->
+				    		{% else %}
+				    		<li class="previous"><a href="/blog?category={{category}}&page={{page-1}}"><span aria-hidden="true">&larr;</span>上一页</a></li>
+				    		{% endif %}
+				    		{%if pages>1 %}
+				    		<li>{{page}}/{{pages}}</li>
+				    		{%else%}
+				    		{%endif%}
+				    		{%if page >= pages%}
+				    		{% else %}
+				    		<li class="next"><a href="/blog?category={{category}}&page={{page+1}}">下一页<span aria-hidden="true">&rarr;</span></a></li>
+				    		{%endif%}
+				  		</ul>
+					</div>
+				</div>
+				<div class="col-sm-4" style="position: relative;">
+					<div class="aboutme">
+						<p><strong>About me</strong></p>
+						<div id="myimg"><img src="../../public/img/myhead.jpg"/>Writer&admin</div>
+						<p class="aboutme-content">
+							一个即将毕业的前端学习者
+						</p>
+					</div>
+					<div class="aboutme">
+						<p><strong>Contact me</strong></p>
+						<a class="iconfont" href="#">
+							<svg class="icon" aria-hidden="true" style="font-size: 30px;">
+							  <use xlink:href="#icon-weibo"></use>
+							</svg>
+						</a>
+						<a class="iconfont" href="#">
+							<svg class="icon" aria-hidden="true" style="font-size: 30px;">
+							  <use xlink:href="#icon-matuwang-zhihufangxingdianji"></use>
+							</svg>
+						</a>
+						<a class="iconfont" href="">
+							<svg class="icon" aria-hidden="true" style="font-size: 30px;">
+							  <use xlink:href="#icon-facebook"></use>
+							</svg>
+						</a>
+						<a class="iconfont" href="">
+							<svg class="icon" aria-hidden="true" style="font-size: 30px;">
+							  <use xlink:href="#icon-csdn"></use>
+							</svg>
+						</a>
+						<br />
+					</div>
+					{% if userInfo._id %}
+					<div class="aboutme userinfo">
+						<div>
+							<p class="userId">{{userInfo.username}}</p>
+							{%if userInfo.isAdmin %}
+							<p><span>你好管理员！</span><a href="/admin" class="logadmin">进入管理</a></p>
+							{% else %}
+							<p>你好，欢迎光临我的博客</p>
+							{% endif %}
+							<p><a class="logout">注销</a></p>
+						</div>
+					</div>
+					{% else %}
+					<div class="aboutme login box">
+						<p><strong>登录</strong></p>
+						<br />
+						<input type="text" class="form-control" placeholder="用户名" name="username"/><br />
+						<input type="password" class="form-control" placeholder="密码" name="password" /><br />
+						<span class="tips"></span>
+						<button class="btn btn-default">登录</button><br />
+						<span class="link">还没注册？Go!</span>
+					</div>
+					<div class="aboutme register box">
+						<p><strong>注册</strong></p>
+						<br />
+						<input type="text" class="form-control" placeholder="用户名" name="username"/><br />
+						<input type="password" class="form-control" placeholder="密码" name="password" /><br />
+						<input type="password" class="form-control" placeholder="确认密码" name="repassword" /><br />
+						<span class="tips" ></span>
+						<button class="btn btn-default">注册</button><br />
+						<span class="link">已有账号？Go!</span>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		<script src="../../public/js/jquery-2.1.0.js"></script>
+		<script src="../../public/js/bootstrap.min.js"></script>
+		<script src="../../public/js/main.js"></script>
+		<script type="text/javascript" src="../../public/js/css.js" ></script>
+		<script src="../../public/js/iconfont.js"></script>
+	</body>
+</html>

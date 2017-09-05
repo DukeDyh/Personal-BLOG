@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css"/>
+	<body>
+		{% include "layout.html" %}
+		<div class="container-fluid">
+			<div class="jumbotron">
+				<h1>Hello,{{userInfo.username}}!</h1>
+				<p>欢迎进入博客后台管理</p>
+				<p><a class="btn btn-primary btn-lg" href="/" role="button">回到博客</a></p>
+			</div>
+		</div>
+		<script src="../../public/js/jquery-2.1.0.js"></script>
+		<script src="../../public/js/bootstrap.min.js"></script>
+	</body>
+</html>

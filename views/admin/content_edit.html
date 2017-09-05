@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap-theme.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css"/>
+	</head>
+	<body>
+		{% include "layout.html" %}
+			<ol class="breadcrumb">
+  			<li><a href="#">管理首页</a></li>
+  			<li><span>分类列表</span></li>
+			</ol>
+			<h3>{{content.title}}内容修改</h3>
+				<p id="content-id" style="display: none;">{{content._id.toString()}}</p>
+				<div class="form-group">
+					<label for="titile" >分类</label>
+					<select name="category" id="category" class="form-control" value="{{content.category.name}}">
+						{%for category in categories%}
+							{% if content.category._id.toString()== category._id.toString() %}
+							<option value="{{category.id}}" selected="true">{{category.name}}</option>
+							{%else%}
+							<option value="{{category.id}}">{{category.name}}</option>
+							{%endif%}
+						{%endfor%}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="title" >标题</label>
+					<input type="text" class="form-control" id="title" placeholder="请输入标题" name="title" value="{{content.title}}">
+				</div>
+				<div class="form-group">
+					<label for="description">简介</label>
+					<textarea type="text" class="form-control" id="description" placeholder="请输入内容简介" name="description" rows="5">{{content.description}}</textarea>
+				</div>
+				<div class="form-group" rows="10">
+					<label for="content" >内容</label>
+					<textarea type="text" class="form-control" id="content" placeholder="请输入内容" name="content" rows="10">{{content.content}}</textarea>
+				</div>
+					<p class="tips" style="height: 20px;"></p>
+				  <button type="submit" class="btn btn-default">提交</button>
+			
+			<br />
+			<br />
+			<script src="../../public/js/jquery-2.1.0.js"></script>
+			<script src="../../public/js/bootstrap.min.js"></script>
+			<script src="../../public/js/content_edit.js"></script>
+	</body>
+</html>
