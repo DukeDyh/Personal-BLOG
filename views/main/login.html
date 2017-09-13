@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<!--导航部分-->
-		<nav class="nav navbar-inverse navbar-fixed-top" role="navgation" style="background: #232533;">
+		<nav class="nav navbar-inverse fixed-top" role="navgation" style="background: #232533;">
       <div class="navbar-header">
           <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="icon-bar"></span>
@@ -30,7 +30,7 @@
       <div class="collapse navbar-collapse" style="padding: 0;">
       	<ul class="nav mynavbar">
 					<li>
-						<a href="" class="section">首页<span>></span></a>
+						<a href="/blog" class="section">首页<span>></span></a>
 					</li>
 					<li>
 						<a class="section">技术栈<span>></span></a>
@@ -98,50 +98,69 @@
 		</div>
 		<!--导航结束-->
 		<div class="container">
-			<div class="col-sm-4"></div>
-			<article class="col-sm-8 main">
-				<div class="container-fluid">
-					<p class="title_1" style="padding: 20px;">技术栈</p>
-					{% for content in contents%}
-					<div class="article clearfix">
-						<p class="title">{{content.title}}<p class="date">{{content.addTime|date("Y年m月d日")}}</p></p>
-						<p class="description">{{content.description}}</p>
-						<span class="read">
-							<svg class="icon icon1" aria-hidden="true">
-							  <use xlink:href="#icon-yuedu"></use>
-							</svg>
-							({{content.views}})
-						</span>
-						<span class="comments">
-							<svg class="icon icon2" aria-hidden="true">
-							  <use xlink:href="#icon-comment"></use>22
-							</svg>
-							({{content.comments.length}})
-						</span>
-						<a class="more" href="/view?contentid={{content.id}}">阅读更多</a>
+			<div class="col-sm-3"></div>
+			<div class="col-sm-9">
+				{% if userInfo._id %}
+				<div class="box">
+					<div class="jumbotron">
+						<h2 class="userId">{{userInfo.username}}</h2>
+						{%if userInfo.isAdmin %}
+						<p><span>你好管理员！</span><a href="/admin" style="cursor: pointer;">进入管理</a></p>
+						{% else %}
+						<p>你好，欢迎光临我的博客</p>
+						{% endif %}
+						<p><a class="logout" style="cursor: pointer;">注销</a></p>
 					</div>
-					{%endfor%}
-					<ul class="clearfix pagechange" style="margin-left: -40px;">
-		  			{%if page<=1 %}
-		    		{% else %}
-		    		<li style="float: left"><a href="/blog?category={{category}}&page={{page-1}}">上一页</a></li>
-		    		{% endif %}
-		    		{%if pages%}
-		    		<li class="page-p">{{page}}/{{pages}}</li>
-		    		{% else %}
-		    		{%endif%}
-		    		{%if page >= pages%}
-		    		{% else %}
-		    		<li style="float: right;"><a href="/blog?category={{category}}&page={{page+1}}">下一页</a></li>
-		    		{%endif%}
-		  		</ul>
 				</div>
-			</article>
+				{% else %}
+				<div class="login box">
+						<span class="icon_3">
+							<svg class="icon icon-3" aria-hidden="true">
+							  <use xlink:href="#icon-yonghu"></use>
+							</svg>
+						</span>
+					<input type="text" class="form-control" placeholder="用户名" name="username"/><br />
+						<span class="icon_3">
+							<svg class="icon icon-3" aria-hidden="true">
+							  <use xlink:href="#icon-loginpassword"></use>
+							</svg>
+						</span>
+					<input type="password" class="form-control" placeholder="密码" name="password" /><br />
+					<span class="tips"></span>
+					<button class="btn btn-default">登录</button><br />
+					<span class="link">还没注册？Go!</span>
+				</div>
+				<div class="register box">
+					<br />
+					<span class="icon_3">
+						<svg class="icon icon-3" aria-hidden="true">
+						  <use xlink:href="#icon-yonghu"></use>
+						</svg>
+					</span>
+					<input type="text" class="form-control" placeholder="用户名" name="username"/><br />
+					<span class="icon_3">
+						<svg class="icon icon-3" aria-hidden="true">
+						  <use xlink:href="#icon-loginpassword"></use>
+						</svg>
+					</span>
+					<input type="password" class="form-control" placeholder="密码" name="password" /><br />
+					<span class="icon_3">
+						<svg class="icon icon-3" aria-hidden="true">
+						  <use xlink:href="#icon-loginpassword"></use>
+						</svg>
+					</span>
+					<input type="password" class="form-control" placeholder="确认密码" name="repassword" /><br />
+					<span class="tips" ></span>
+					<button class="btn btn-default">注册</button><br />
+					<span class="link">已有账号？Go!</span>
+				</div>
+				{% endif %}
+			</div>
 		</div>
 		<script src="../../public/js/jquery-2.1.0.js"></script>
-		<script src="../../public/js/bootstrap.min.js"></script>
 		<script src="../../public/js/main.js"></script>
 		<script src="../../public/js/css.js"></script>
 		<script src="../../public/js/iconfont.js"></script>
+		<script src="../../public/js/iconfont1.js"></script>
 	</body>
 </html>

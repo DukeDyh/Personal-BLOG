@@ -38,11 +38,11 @@ $("#commentBtn").click(function(){
 function renderComment(comments){
 	var html = "";
 	for(var i = 0+limit*(page-1);i<Math.min(limit*page,comments.length);i++){
-		html += '<div class="messageBox">'
-		+"<p class='name clear'><span class='f1'>"
-		+comments[i].username+"  "+"</span><span class='fr'>"
-		+formatDate(comments[i].postTime)+"</span></p><p class='mycomments' style='white-space:pre-wrap;'>"+comments[i].content
-		+"</p></div><a class='innerComment' style='cursor:pointer'>引用</a>";
+		html += '<div class="messageBox" style="padding-top:30px;padding-bottom:30px;">'
+		+				"<div><p class='name clear'><span class='f1'>"
+		+				comments[i].username+"  "+"</span><span class='fr'>"
+		+formatDate(comments[i].postTime)+"</span></p>"+comments[i].content
+		+"</div><a class='innerComment' style='cursor:pointer'>引用</a></div>";
 	}
 	$(".messageList").html(html);
 }
@@ -85,6 +85,7 @@ $("#prev").click(function(){
 setTimeout(function(){
 	$(".innerComment").click(function(){
 		$("#messageContent").text($(this).prev().html());
+		console.log($(this).prev());
 	});
 },500);
 
