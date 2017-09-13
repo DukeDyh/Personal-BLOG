@@ -1,5 +1,5 @@
 个人博客
-
+--version 1.0
 1.技术使用
 
 node.js+Jquery+bootstrap+mongodb+swig+express
@@ -16,4 +16,11 @@ node.js+Jquery+bootstrap+mongodb+swig+express
 
 3.待改善：
 
-没有加入编辑器，文章编辑有些困难。 还是老问题了！没有UI设计。。。。前台界面全靠自己意淫。有点丑吧。。。。。。。
+--version 2.0
+
+全新的ui界面！！
+
+更好的用户体验！！
+
+
+下次更新会加上富文本编辑器以及管理员对评论的删除功能！
